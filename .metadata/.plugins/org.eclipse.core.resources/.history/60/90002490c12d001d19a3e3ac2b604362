@@ -1,0 +1,5 @@
+package com.xoriant.assignment.model;
+
+public class VaccinationCenterController {
+
+}

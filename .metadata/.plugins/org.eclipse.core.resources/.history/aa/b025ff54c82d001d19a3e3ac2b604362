@@ -1,0 +1,5 @@
+package com.xoriant.assignment.repository;
+
+public interface CitizenRepository {
+
+}

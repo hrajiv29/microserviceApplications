@@ -1,0 +1,14 @@
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+    
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: CUSTOMER-SERVICE
+        uri:
+          lb://CUSTOMER-SERVICE
+        predicates:
+        - Path=/citizen/**

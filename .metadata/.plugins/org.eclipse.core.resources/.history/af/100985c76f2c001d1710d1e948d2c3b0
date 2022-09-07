@@ -1,0 +1,5 @@
+package com.xoriant.interview.controller;
+
+public class CustomerController {
+
+}

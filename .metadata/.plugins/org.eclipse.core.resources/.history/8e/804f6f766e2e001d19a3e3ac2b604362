@@ -1,0 +1,42 @@
+package com.xoriant.assignment.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.xoriant.assignment.entity.VaccinationCenter;
+import com.xoriant.assignment.model.RequiredResponse;
+import com.xoriant.assignment.repository.CenterRepository;
+
+@RestController
+@RequestMapping("/vaccinationcenter")
+public class VaccinationCenterController {
+
+	@Autowired
+	private CenterRepository centerRepository;
+
+	@PostMapping(path = "/add")
+	public ResponseEntity<VaccinationCenter> addCitizen(@RequestBody VaccinationCenter vaccinationCenter) {
+
+		VaccinationCenter vaccinationCenterr = centerRepository.save(vaccinationCenter);
+
+		return new ResponseEntity<>(vaccinationCenterr, HttpStatus.OK);
+
+	}
+
+	
+	@GetMapping(path = "/id/{id}")
+	public ResponseEntity<RequiredResponse> getAllDataBasedOnCenterId(@PathVariable Integer id) {
+		RequiredResponse resp= new RequiredResponse();
+		VaccinationCenter center = centerRepository.findById(id).get();
+		resp.setVaccinationCenter(center);
+		
+		return new ResponseEntity<>(resp,HttpStatus.OK);
+	}
+}

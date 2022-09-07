@@ -1,0 +1,5 @@
+package com.xoriant.interview.repository;
+
+public class CustomerRepository extends JPARepository{
+
+}
